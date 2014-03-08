@@ -4,10 +4,10 @@
   :file: test_Institution.c
 :successes:
 - :test: test_Institution_reverse_should_reverse_the_institude_with_2_different_institution
-  :line: 14
+  :line: 20
   :message: ''
 - :test: test_Institution_reverse_should_reverse_the_institude_with_3_different_institution
-  :line: 38
+  :line: 44
   :message: ''
 :failures: []
 :ignores: []

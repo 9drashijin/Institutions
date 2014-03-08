@@ -80,8 +80,8 @@ int main(void)
 {
   Unity.TestFile = "test_Institution.c";
   UnityBegin();
-  RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_2_different_institution, 14);
-  RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_3_different_institution, 38);
+  RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_2_different_institution, 20);
+  RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_3_different_institution, 44);
 
   return (UnityEnd());
 }
