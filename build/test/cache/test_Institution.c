@@ -108,7 +108,7 @@ void test_Institution_reverse_should_reverse_the_institude_with_3_different_inst
 
 }
 
-void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_same_type(){
+void test_isUniversityCollege_should_compare_and_return_1_if_Institution_is_the_same_type(){
 
  int compare;
 
@@ -150,7 +150,7 @@ void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_sa
 
 }
 
-void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type(){
+void test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_different_type(){
 
  int compare;
 
@@ -237,5 +237,145 @@ void test_Institution_select_should_select_the_institution(){
  Institution_select(&listIn,&listOut,&random,isUniversityCollege);
 
 
+
+}
+
+void test_Established_Year_should_compare_and_return_1_if_the_year_is_the_same(){
+
+ int compare;
+
+ Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
+
+       {.type = University, .yearEstablished = 2000},
+
+       {.type = UniversityCollege, .yearEstablished = 3000},
+
+       {.type = College, .yearEstablished = 4000 }};
+
+
+
+ InstitutionType type = Unknown;
+
+ InstitutionType type2 = University;
+
+ InstitutionType type3 = UniversityCollege;
+
+ InstitutionType type4 = College;
+
+
+
+ InstitutionType year = 1000;
+
+ InstitutionType year2 = 2000;
+
+ InstitutionType year3 = 3000;
+
+ InstitutionType year4 = 4000;
+
+
+
+ compare = isUniversityCollege(&Insti[0],&type);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)153, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[1],&type2);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)155, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[2],&type3);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)157, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[3],&type4);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)159, UNITY_DISPLAY_STYLE_INT);
+
+
+
+ compare = wasEstablishedBefore(&Insti[0],&year);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)162, UNITY_DISPLAY_STYLE_INT);
+
+ compare = wasEstablishedBefore(&Insti[1],&year2);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)164, UNITY_DISPLAY_STYLE_INT);
+
+ compare = wasEstablishedBefore(&Insti[2],&year3);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)166, UNITY_DISPLAY_STYLE_INT);
+
+ compare = wasEstablishedBefore(&Insti[3],&year4);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)168, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+void test_Established_Year_should_compare_and_return_0_if_the_year_is_the_different(){
+
+ int compare;
+
+ Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
+
+       {.type = University, .yearEstablished = 2000},
+
+       {.type = UniversityCollege, .yearEstablished = 3000},
+
+       {.type = College, .yearEstablished = 4000 }};
+
+
+
+ InstitutionType type = Unknown;
+
+ InstitutionType type2 = University;
+
+ InstitutionType type3 = UniversityCollege;
+
+ InstitutionType type4 = College;
+
+
+
+ InstitutionType year = 1234;
+
+ InstitutionType year2 = 2345;
+
+ InstitutionType year3 = 3456;
+
+ InstitutionType year4 = 4567;
+
+
+
+ compare = isUniversityCollege(&Insti[0],&type);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)188, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[1],&type2);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)190, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[2],&type3);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)192, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[3],&type4);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)194, UNITY_DISPLAY_STYLE_INT);
+
+
+
+ compare = wasEstablishedBefore(&Insti[0],&year);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)197, UNITY_DISPLAY_STYLE_INT);
+
+ compare = wasEstablishedBefore(&Insti[1],&year2);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)199, UNITY_DISPLAY_STYLE_INT);
+
+ compare = wasEstablishedBefore(&Insti[2],&year3);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)201, UNITY_DISPLAY_STYLE_INT);
+
+ compare = wasEstablishedBefore(&Insti[3],&year4);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)203, UNITY_DISPLAY_STYLE_INT);
 
 }

@@ -66,7 +66,7 @@ void test_Institution_reverse_should_reverse_the_institude_with_3_different_inst
 	Institution_reverse(&listIn,&listOut);
 	
 }
-void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_same_type(){
+void test_isUniversityCollege_should_compare_and_return_1_if_Institution_is_the_same_type(){
 	int compare;
 	Institution Insti[] = {{.type = Unknown},
 							{.type = University},
@@ -87,7 +87,7 @@ void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_sa
 	compare = isUniversityCollege(&Insti[3],&type4);
 	TEST_ASSERT_EQUAL(1,compare);
 }
-void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type(){
+void test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_different_type(){
 	int compare;
 	Institution Insti[] = {{.type = Unknown},
 							{.type = University},
@@ -131,4 +131,46 @@ void test_Institution_select_should_select_the_institution(){
 	List_removeHead_ExpectAndReturn(&listIn,NULL);
 	Institution_select(&listIn,&listOut,&random,isUniversityCollege);
 	
+}
+void test_Established_Year_should_compare_and_return_1_if_the_year_is_the_same(){
+	int compare;
+	Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
+							{.type = University, .yearEstablished = 2000},
+							{.type = UniversityCollege, .yearEstablished = 3000},
+							{.type = College, .yearEstablished = 4000 }};
+
+	InstitutionType year = 1000;
+	InstitutionType year2 = 2000;
+	InstitutionType year3 = 3000;
+	InstitutionType year4 = 4000; //just a int value for testing
+	
+	compare = wasEstablishedBefore(&Insti[0],&year);
+	TEST_ASSERT_EQUAL(1,compare);
+	compare = wasEstablishedBefore(&Insti[1],&year2);
+	TEST_ASSERT_EQUAL(1,compare);
+	compare = wasEstablishedBefore(&Insti[2],&year3);
+	TEST_ASSERT_EQUAL(1,compare);
+	compare = wasEstablishedBefore(&Insti[3],&year4);
+	TEST_ASSERT_EQUAL(1,compare);
+}
+void test_Established_Year_should_compare_and_return_0_if_the_year_is_the_different(){
+	int compare;
+	Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
+							{.type = University, .yearEstablished = 2000},
+							{.type = UniversityCollege, .yearEstablished = 3000},
+							{.type = College, .yearEstablished = 4000 }};
+	
+	InstitutionType year = 1234;
+	InstitutionType year2 = 2345;
+	InstitutionType year3 = 3456;
+	InstitutionType year4 = 4567; //just a int value for testing
+	
+	compare = wasEstablishedBefore(&Insti[0],&year);
+	TEST_ASSERT_EQUAL(0,compare);
+	compare = wasEstablishedBefore(&Insti[1],&year2);
+	TEST_ASSERT_EQUAL(0,compare);
+	compare = wasEstablishedBefore(&Insti[2],&year3);
+	TEST_ASSERT_EQUAL(0,compare);
+	compare = wasEstablishedBefore(&Insti[3],&year4);
+	TEST_ASSERT_EQUAL(0,compare);
 }

@@ -60,6 +60,12 @@ int Institution_select(LinkedList *inputList, LinkedList *outputList,void *crite
 	
 	
 }
-int wasEstablishedBefore(void *elem1,void*year){
+int wasEstablishedBefore(void *elem1,void *year){
+	//compare EstablishedYear, 1 = same 0 = diff
+	Institution *Institution = elem1;
+	int *yearS = year;
+	
+	if(Institution->yearEstablished == *yearS){return 1;}
+	else {return 0;}
 	
 }

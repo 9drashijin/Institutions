@@ -42,9 +42,11 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_Institution_reverse_should_reverse_the_institude_with_2_different_institution(void);
 extern void test_Institution_reverse_should_reverse_the_institude_with_3_different_institution(void);
-extern void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_same_type(void);
-extern void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type(void);
+extern void test_isUniversityCollege_should_compare_and_return_1_if_Institution_is_the_same_type(void);
+extern void test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_different_type(void);
 extern void test_Institution_select_should_select_the_institution(void);
+extern void test_Established_Year_should_compare_and_return_1_if_the_year_is_the_same(void);
+extern void test_Established_Year_should_compare_and_return_0_if_the_year_is_the_different(void);
 
 
 //=======Mock Management=====
@@ -85,9 +87,11 @@ int main(void)
   UnityBegin();
   RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_2_different_institution, 20);
   RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_3_different_institution, 44);
-  RUN_TEST(test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_same_type, 69);
-  RUN_TEST(test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type, 90);
+  RUN_TEST(test_isUniversityCollege_should_compare_and_return_1_if_Institution_is_the_same_type, 69);
+  RUN_TEST(test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_different_type, 90);
   RUN_TEST(test_Institution_select_should_select_the_institution, 111);
+  RUN_TEST(test_Established_Year_should_compare_and_return_1_if_the_year_is_the_same, 135);
+  RUN_TEST(test_Established_Year_should_compare_and_return_0_if_the_year_is_the_different, 170);
 
   return (UnityEnd());
 }
