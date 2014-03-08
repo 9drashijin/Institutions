@@ -45,7 +45,6 @@ void test_Institution_reverse_should_reverse_the_institude_with_3_different_inst
 	Institution institude,institude2,institude3;
 
 	LinkedList listIn,listOut;
-	//Stack stack;
 	
 	List_removeHead_ExpectAndReturn(&listIn, &institude);
 	Stack_push_Expect(&stack , &institude);
@@ -110,8 +109,6 @@ void test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_
 }
 void test_Institution_select_should_select_the_institution(){
 	
-	//Institution institude,institude2;
-
 	LinkedList listIn,listOut;
 	
 	Institution Insti[] = {{.type = Unknown},
@@ -173,4 +170,26 @@ void test_Established_Year_should_compare_and_return_0_if_the_year_is_the_differ
 	TEST_ASSERT_EQUAL(0,compare);
 	compare = wasEstablishedBefore(&Insti[3],&year4);
 	TEST_ASSERT_EQUAL(0,compare);
+}
+void test_Institution_select_should_select_the_institution_year(){
+	
+	LinkedList listIn,listOut;
+	
+	Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
+							{.type = University, .yearEstablished = 2000},
+							{.type = UniversityCollege, .yearEstablished = 3000},
+							{.type = College, .yearEstablished = 4000 }};
+	char random;
+	
+	List_removeHead_ExpectAndReturn(&listIn,&Insti[0]);
+	List_addTail_Expect(&listOut, &Insti[0]);
+	List_removeHead_ExpectAndReturn(&listIn,&Insti[1]);
+	List_addTail_Expect(&listOut, &Insti[1]);
+	List_removeHead_ExpectAndReturn(&listIn,&Insti[2]);
+	List_addTail_Expect(&listOut, &Insti[2]);
+	List_removeHead_ExpectAndReturn(&listIn,&Insti[3]);
+	List_addTail_Expect(&listOut, &Insti[3]);
+	List_removeHead_ExpectAndReturn(&listIn,NULL);
+	Institution_select(&listIn,&listOut,&random,wasEstablishedBefore);
+	
 }

@@ -68,4 +68,6 @@ int wasEstablishedBefore(void *elem1,void *year){
 	if(Institution->yearEstablished == *yearS){return 1;}
 	else {return 0;}
 	
+	if(Institution->yearEstablished > 2014){return 0;}
+	
 }
