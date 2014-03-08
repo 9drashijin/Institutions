@@ -191,3 +191,51 @@ void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_di
  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)109, UNITY_DISPLAY_STYLE_INT);
 
 }
+
+void test_Institution_select_should_select_the_institution(){
+
+
+
+
+
+
+
+ LinkedList listIn,listOut;
+
+
+
+ Institution Insti[] = {{.type = Unknown},
+
+       {.type = University},
+
+       {.type = UniversityCollege},
+
+       {.type = College}};
+
+ char random;
+
+
+
+ List_removeHead_CMockExpectAndReturn(123, &listIn, &Insti[0]);
+
+ List_addTail_CMockExpect(124, &listOut, &Insti[0]);
+
+ List_removeHead_CMockExpectAndReturn(125, &listIn, &Insti[1]);
+
+ List_addTail_CMockExpect(126, &listOut, &Insti[1]);
+
+ List_removeHead_CMockExpectAndReturn(127, &listIn, &Insti[2]);
+
+ List_addTail_CMockExpect(128, &listOut, &Insti[2]);
+
+ List_removeHead_CMockExpectAndReturn(129, &listIn, &Insti[3]);
+
+ List_addTail_CMockExpect(130, &listOut, &Insti[3]);
+
+ List_removeHead_CMockExpectAndReturn(131, &listIn, ((void *)0));
+
+ Institution_select(&listIn,&listOut,&random,isUniversityCollege);
+
+
+
+}

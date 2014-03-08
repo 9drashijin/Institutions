@@ -15,11 +15,14 @@
 - :test: test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type
   :line: 90
   :message: ''
+- :test: test_Institution_select_should_select_the_institution
+  :line: 111
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 4
-  :passed: 4
+  :total: 5
+  :passed: 5
   :failed: 0
   :ignored: 0
 :stdout: []

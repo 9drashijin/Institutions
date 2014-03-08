@@ -33,7 +33,7 @@ void test_Institution_reverse_should_reverse_the_institude_with_2_different_inst
 	Stack_pop_ExpectAndReturn(&stack, &institude2);
 	List_addTail_Expect(&listOut, &institude2);
 	Stack_pop_ExpectAndReturn(&stack, &institude);
-	List_addTail_Expect(&listOut, &institude);	
+	List_addTail_Expect(&listOut, &institude);
 	
 	Institution_reverse(&listIn,&listOut);
 
@@ -107,4 +107,28 @@ void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_di
 	TEST_ASSERT_EQUAL(0,compare);
 	compare = isUniversityCollege(&Insti[3],&type4);
 	TEST_ASSERT_EQUAL(0,compare);
+}
+void test_Institution_select_should_select_the_institution(){
+	
+	//Institution institude,institude2;
+
+	LinkedList listIn,listOut;
+	
+	Institution Insti[] = {{.type = Unknown},
+							{.type = University},
+							{.type = UniversityCollege},
+							{.type = College}};
+	char random;
+	
+	List_removeHead_ExpectAndReturn(&listIn,&Insti[0]);
+	List_addTail_Expect(&listOut, &Insti[0]);
+	List_removeHead_ExpectAndReturn(&listIn,&Insti[1]);
+	List_addTail_Expect(&listOut, &Insti[1]);
+	List_removeHead_ExpectAndReturn(&listIn,&Insti[2]);
+	List_addTail_Expect(&listOut, &Insti[2]);
+	List_removeHead_ExpectAndReturn(&listIn,&Insti[3]);
+	List_addTail_Expect(&listOut, &Insti[3]);
+	List_removeHead_ExpectAndReturn(&listIn,NULL);
+	Institution_select(&listIn,&listOut,&random,isUniversityCollege);
+	
 }

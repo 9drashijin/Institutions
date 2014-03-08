@@ -21,16 +21,16 @@ int Institution_reverse(LinkedList *inputList, LinkedList *outputList){
 	temp = List_removeHead(inputList);
 	stackCount = 0;
 	do{
-	Stack_push(&stack, temp);
-	temp = List_removeHead(inputList);
-	stackCount++;
+		Stack_push(&stack, temp);
+		temp = List_removeHead(inputList);
+		stackCount++;
 	}
 	while( temp!=NULL );
 	
 	do{
-	stackCount--;
-	temp = Stack_pop(&stack);
-	List_addTail(outputList, temp);
+		stackCount--;
+		temp = Stack_pop(&stack);
+		List_addTail(outputList, temp);
 	}
 	while(stackCount!=0);
 
@@ -52,9 +52,14 @@ int Institution_select(LinkedList *inputList, LinkedList *outputList,void *crite
 	if(inputList->head = NULL){return 0;}
 	
 	temp = List_removeHead(inputList);
+	do{
+		List_addTail(outputList, temp);
+		temp = List_removeHead(inputList);
+	}
+	while( temp!=NULL );
 	
 	
 }
 int wasEstablishedBefore(void *elem1,void*year){
-
+	
 }

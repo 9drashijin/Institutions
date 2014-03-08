@@ -1,6 +1,7 @@
 #ifndef __INSTITUTION_H__
 #define __INSTITUTION_H__
 
+#include "LinkedList.h"
 #include "Stack.h"
 extern Stack stack;
 
@@ -19,5 +20,8 @@ typedef struct Institution_t{
 	int yearEstablished;
 }Institution;
 
+int Institution_reverse(LinkedList *inputList, LinkedList *outputList);
+int isUniversityCollege(void *elem1, void *type);
+//int Institution_select(LinkedList *inputList, LinkedList *outputList,void *criterion, int(*compare)(void* , void*))
 
 #endif // __INSTITUTION_H__
