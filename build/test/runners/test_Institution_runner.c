@@ -42,6 +42,8 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_Institution_reverse_should_reverse_the_institude_with_2_different_institution(void);
 extern void test_Institution_reverse_should_reverse_the_institude_with_3_different_institution(void);
+extern void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_same_type(void);
+extern void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type(void);
 
 
 //=======Mock Management=====
@@ -82,6 +84,8 @@ int main(void)
   UnityBegin();
   RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_2_different_institution, 20);
   RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_3_different_institution, 44);
+  RUN_TEST(test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_same_type, 69);
+  RUN_TEST(test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type, 90);
 
   return (UnityEnd());
 }

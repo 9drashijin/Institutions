@@ -107,3 +107,87 @@ void test_Institution_reverse_should_reverse_the_institude_with_3_different_inst
 
 
 }
+
+void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_same_type(){
+
+ int compare;
+
+ Institution Insti[] = {{.type = Unknown},
+
+       {.type = University},
+
+       {.type = UniversityCollege},
+
+       {.type = College}};
+
+
+
+ InstitutionType type = Unknown;
+
+ InstitutionType type2 = University;
+
+ InstitutionType type3 = UniversityCollege;
+
+ InstitutionType type4 = College;
+
+
+
+ compare = isUniversityCollege(&Insti[0],&type);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)82, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[1],&type2);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)84, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[2],&type3);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)86, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[3],&type4);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)88, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type(){
+
+ int compare;
+
+ Institution Insti[] = {{.type = Unknown},
+
+       {.type = University},
+
+       {.type = UniversityCollege},
+
+       {.type = College}};
+
+
+
+ InstitutionType type = College;
+
+ InstitutionType type2 = UniversityCollege;
+
+ InstitutionType type3 = University;
+
+ InstitutionType type4 = Unknown;
+
+
+
+ compare = isUniversityCollege(&Insti[0],&type);
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)103, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[1],&type2);
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)105, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[2],&type3);
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)107, UNITY_DISPLAY_STYLE_INT);
+
+ compare = isUniversityCollege(&Insti[3],&type4);
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((compare)), (((void *)0)), (_U_UINT)109, UNITY_DISPLAY_STYLE_INT);
+
+}

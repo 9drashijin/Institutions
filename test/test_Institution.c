@@ -66,3 +66,45 @@ void test_Institution_reverse_should_reverse_the_institude_with_3_different_inst
 	Institution_reverse(&listIn,&listOut);
 	
 }
+void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_same_type(){
+	int compare;
+	Institution Insti[] = {{.type = Unknown},
+							{.type = University},
+							{.type = UniversityCollege},
+							{.type = College}};
+							
+	InstitutionType type = Unknown;
+	InstitutionType type2 = University;
+	InstitutionType type3 = UniversityCollege;
+	InstitutionType type4 = College;
+	
+	compare = isUniversityCollege(&Insti[0],&type);
+	TEST_ASSERT_EQUAL(1,compare);
+	compare = isUniversityCollege(&Insti[1],&type2);
+	TEST_ASSERT_EQUAL(1,compare);
+	compare = isUniversityCollege(&Insti[2],&type3);
+	TEST_ASSERT_EQUAL(1,compare);
+	compare = isUniversityCollege(&Insti[3],&type4);
+	TEST_ASSERT_EQUAL(1,compare);
+}
+void test_isUniversityCollege_should_compare_and_return_if_Institution_is_the_different_type(){
+	int compare;
+	Institution Insti[] = {{.type = Unknown},
+							{.type = University},
+							{.type = UniversityCollege},
+							{.type = College}};
+	
+	InstitutionType type = College;
+	InstitutionType type2 = UniversityCollege;
+	InstitutionType type3 = University;
+	InstitutionType type4 = Unknown;
+	
+	compare = isUniversityCollege(&Insti[0],&type);
+	TEST_ASSERT_EQUAL(0,compare);
+	compare = isUniversityCollege(&Insti[1],&type2);
+	TEST_ASSERT_EQUAL(0,compare);
+	compare = isUniversityCollege(&Insti[2],&type3);
+	TEST_ASSERT_EQUAL(0,compare);
+	compare = isUniversityCollege(&Insti[3],&type4);
+	TEST_ASSERT_EQUAL(0,compare);
+}
