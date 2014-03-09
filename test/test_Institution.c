@@ -3,6 +3,7 @@
 #include "mock_LinkedList.h"
 #include "mock_Stack.h"
 #include <stdio.h>
+#include "CException.h"
 
 void setUp(){}
 void tearDown(){}
@@ -22,6 +23,7 @@ void test_Institution_reverse_should_reverse_the_institude_with_2_different_inst
 
 	LinkedList listIn,listOut;
 	//Stack stack;
+	int stackCount;
 	
 	List_removeHead_ExpectAndReturn(&listIn, &institude);
 	Stack_push_Expect(&stack , &institude);
@@ -35,9 +37,9 @@ void test_Institution_reverse_should_reverse_the_institude_with_2_different_inst
 	Stack_pop_ExpectAndReturn(&stack, &institude);
 	List_addTail_Expect(&listOut, &institude);
 	
-	Institution_reverse(&listIn,&listOut);
+	stackCount = Institution_reverse(&listIn,&listOut);
 
-	//TEST_ASSERT_EQUAL(0, Institution_reverse(&listIn, &listOut));
+	TEST_ASSERT_EQUAL(2, stackCount);
 	
 }
 
@@ -45,6 +47,7 @@ void test_Institution_reverse_should_reverse_the_institude_with_3_different_inst
 	Institution institude,institude2,institude3;
 
 	LinkedList listIn,listOut;
+	int stackCount;
 	
 	List_removeHead_ExpectAndReturn(&listIn, &institude);
 	Stack_push_Expect(&stack , &institude);
@@ -62,7 +65,9 @@ void test_Institution_reverse_should_reverse_the_institude_with_3_different_inst
 	Stack_pop_ExpectAndReturn(&stack, &institude);
 	List_addTail_Expect(&listOut, &institude);	
 	
-	Institution_reverse(&listIn,&listOut);
+	stackCount = Institution_reverse(&listIn,&listOut);
+	
+	TEST_ASSERT_EQUAL(3, stackCount);
 	
 }
 void test_isUniversityCollege_should_compare_and_return_1_if_Institution_is_the_same_type(){
@@ -110,26 +115,39 @@ void test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_
 void test_Institution_select_should_select_the_institution(){
 	
 	LinkedList listIn,listOut;
+	int stackCount;
 	
 	Institution Insti[] = {{.type = Unknown},
 							{.type = University},
 							{.type = UniversityCollege},
 							{.type = College}};
 	char random;
+	InstitutionType type = UniversityCollege;
 	
 	List_removeHead_ExpectAndReturn(&listIn,&Insti[0]);
-	List_addTail_Expect(&listOut, &Insti[0]);
+	Stack_push_Expect(&stack,&Insti[0]);
 	List_removeHead_ExpectAndReturn(&listIn,&Insti[1]);
-	List_addTail_Expect(&listOut, &Insti[1]);
+	Stack_push_Expect(&stack,&Insti[1]);
 	List_removeHead_ExpectAndReturn(&listIn,&Insti[2]);
-	List_addTail_Expect(&listOut, &Insti[2]);
+	Stack_push_Expect(&stack,&Insti[2]);
 	List_removeHead_ExpectAndReturn(&listIn,&Insti[3]);
-	List_addTail_Expect(&listOut, &Insti[3]);
-	List_removeHead_ExpectAndReturn(&listIn,NULL);
-	Institution_select(&listIn,&listOut,&random,isUniversityCollege);
+	Stack_push_Expect(&stack,&Insti[3]);
 	
+	List_removeHead_ExpectAndReturn(&listIn,NULL);
+	
+	Stack_pop_ExpectAndReturn(&stack, &Insti[0]);
+	List_addTail_Expect(&listOut, &Insti[0]);
+	Stack_pop_ExpectAndReturn(&stack, &Insti[1]);
+	List_addTail_Expect(&listOut, &Insti[1]);
+	Stack_pop_ExpectAndReturn(&stack, &Insti[2]);
+	List_addTail_Expect(&listOut, &Insti[2]);
+	Stack_pop_ExpectAndReturn(&stack, &Insti[3]);
+	List_addTail_Expect(&listOut, &Insti[3]);
+	
+	stackCount = Institution_select(&listIn,&listOut,&random,isUniversityCollege);
+	TEST_ASSERT_EQUAL(4, stackCount);
 }
-void test_Established_Year_should_compare_and_return_1_if_the_year_is_the_same(){
+void test_wasEstablishedBefore_Year_should_compare_and_return_1_if_the_year_is_the_same(){
 	int compare;
 	Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
 							{.type = University, .yearEstablished = 2000},
@@ -150,7 +168,7 @@ void test_Established_Year_should_compare_and_return_1_if_the_year_is_the_same()
 	compare = wasEstablishedBefore(&Insti[3],&year4);
 	TEST_ASSERT_EQUAL(1,compare);
 }
-void test_Established_Year_should_compare_and_return_0_if_the_year_is_the_different(){
+void test_wasEstablishedBefore_Year_should_compare_and_return_0_if_the_year_is_the_different(){
 	int compare;
 	Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
 							{.type = University, .yearEstablished = 2000},
@@ -174,22 +192,63 @@ void test_Established_Year_should_compare_and_return_0_if_the_year_is_the_differ
 void test_Institution_select_should_select_the_institution_year(){
 	
 	LinkedList listIn,listOut;
+	int stackCount;
 	
 	Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
 							{.type = University, .yearEstablished = 2000},
 							{.type = UniversityCollege, .yearEstablished = 3000},
 							{.type = College, .yearEstablished = 4000 }};
 	char random;
+	InstitutionType type = UniversityCollege;
 	
 	List_removeHead_ExpectAndReturn(&listIn,&Insti[0]);
-	List_addTail_Expect(&listOut, &Insti[0]);
+	Stack_push_Expect(&stack,&Insti[0]);
 	List_removeHead_ExpectAndReturn(&listIn,&Insti[1]);
-	List_addTail_Expect(&listOut, &Insti[1]);
+	Stack_push_Expect(&stack,&Insti[1]);
 	List_removeHead_ExpectAndReturn(&listIn,&Insti[2]);
-	List_addTail_Expect(&listOut, &Insti[2]);
+	Stack_push_Expect(&stack,&Insti[2]);
 	List_removeHead_ExpectAndReturn(&listIn,&Insti[3]);
-	List_addTail_Expect(&listOut, &Insti[3]);
-	List_removeHead_ExpectAndReturn(&listIn,NULL);
-	Institution_select(&listIn,&listOut,&random,wasEstablishedBefore);
+	Stack_push_Expect(&stack,&Insti[3]);
 	
+	List_removeHead_ExpectAndReturn(&listIn,NULL);
+	
+	Stack_pop_ExpectAndReturn(&stack, &Insti[0]);
+	List_addTail_Expect(&listOut, &Insti[0]);
+	Stack_pop_ExpectAndReturn(&stack, &Insti[1]);
+	List_addTail_Expect(&listOut, &Insti[1]);
+	Stack_pop_ExpectAndReturn(&stack, &Insti[2]);
+	List_addTail_Expect(&listOut, &Insti[2]);
+	Stack_pop_ExpectAndReturn(&stack, &Insti[3]);
+	List_addTail_Expect(&listOut, &Insti[3]);
+	
+	stackCount = Institution_select(&listIn,&listOut,&random,wasEstablishedBefore);
+	TEST_ASSERT_EQUAL(4, stackCount);
+}
+void test_wasEstablishedBefore_should_throw_an_exception_if_the_year_is_greater_than_2014(){
+	int CException;
+	int compare;
+	Institution Insti[] = {{.type = Unknown, .yearEstablished = 1000},
+							{.type = University, .yearEstablished = 2000},
+							{.type = UniversityCollege, .yearEstablished = 3000},
+							{.type = College, .yearEstablished = 4000 }};
+							
+	InstitutionType year = 1234;
+	InstitutionType year2 = 2345;
+	InstitutionType year3 = 3456;
+	InstitutionType year4 = 4567;						
+	
+	Try{
+		compare = wasEstablishedBefore(&Insti[0],&year);
+		TEST_ASSERT_EQUAL(0,compare);
+		compare = wasEstablishedBefore(&Insti[1],&year);
+		TEST_ASSERT_EQUAL(0,compare);
+		compare = wasEstablishedBefore(&Insti[2],&year);
+		TEST_ASSERT_EQUAL(0,compare);
+		compare = wasEstablishedBefore(&Insti[3],&year);
+		TEST_ASSERT_EQUAL(0,compare);
+	}
+	Catch(CException){
+		printf("ERROR");
+		TEST_ASSERT_EQUAL(CException,CException);
+	}
 }

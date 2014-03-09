@@ -45,9 +45,10 @@ extern void test_Institution_reverse_should_reverse_the_institude_with_3_differe
 extern void test_isUniversityCollege_should_compare_and_return_1_if_Institution_is_the_same_type(void);
 extern void test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_different_type(void);
 extern void test_Institution_select_should_select_the_institution(void);
-extern void test_Established_Year_should_compare_and_return_1_if_the_year_is_the_same(void);
-extern void test_Established_Year_should_compare_and_return_0_if_the_year_is_the_different(void);
+extern void test_wasEstablishedBefore_Year_should_compare_and_return_1_if_the_year_is_the_same(void);
+extern void test_wasEstablishedBefore_Year_should_compare_and_return_0_if_the_year_is_the_different(void);
 extern void test_Institution_select_should_select_the_institution_year(void);
+extern void test_wasEstablishedBefore_should_throw_an_exception_if_the_year_is_greater_than_2014(void);
 
 
 //=======Mock Management=====
@@ -86,14 +87,15 @@ int main(void)
 {
   Unity.TestFile = "test_Institution.c";
   UnityBegin();
-  RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_2_different_institution, 20);
-  RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_3_different_institution, 44);
-  RUN_TEST(test_isUniversityCollege_should_compare_and_return_1_if_Institution_is_the_same_type, 68);
-  RUN_TEST(test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_different_type, 89);
-  RUN_TEST(test_Institution_select_should_select_the_institution, 110);
-  RUN_TEST(test_Established_Year_should_compare_and_return_1_if_the_year_is_the_same, 132);
-  RUN_TEST(test_Established_Year_should_compare_and_return_0_if_the_year_is_the_different, 153);
-  RUN_TEST(test_Institution_select_should_select_the_institution_year, 174);
+  RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_2_different_institution, 21);
+  RUN_TEST(test_Institution_reverse_should_reverse_the_institude_with_3_different_institution, 46);
+  RUN_TEST(test_isUniversityCollege_should_compare_and_return_1_if_Institution_is_the_same_type, 73);
+  RUN_TEST(test_isUniversityCollege_should_compare_and_return_0_if_Institution_is_the_different_type, 94);
+  RUN_TEST(test_Institution_select_should_select_the_institution, 115);
+  RUN_TEST(test_wasEstablishedBefore_Year_should_compare_and_return_1_if_the_year_is_the_same, 150);
+  RUN_TEST(test_wasEstablishedBefore_Year_should_compare_and_return_0_if_the_year_is_the_different, 171);
+  RUN_TEST(test_Institution_select_should_select_the_institution_year, 192);
+  RUN_TEST(test_wasEstablishedBefore_should_throw_an_exception_if_the_year_is_greater_than_2014, 227);
 
   return (UnityEnd());
 }
